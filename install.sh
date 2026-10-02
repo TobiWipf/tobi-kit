@@ -37,5 +37,5 @@ for t in $RULE_TARGETS; do mkdir -p "$(dirname "$t")"; link "$ROOT/AGENTS.md" "$
 
 # Cursor wants frontmatter on rule files, so this one is generated, not linked. Re-run after editing AGENTS.md.
 mkdir -p "$(dirname "$CURSOR_RULE")"
-{ printf -- '---\ndescription: tobi-mode, generated from Tobi's Kit (AGENTS.md). Edit the source, then re-run install.sh.\nalwaysApply: true\n---\n'; cat "$ROOT/AGENTS.md"; } > "$CURSOR_RULE"
+{ printf -- '---\ndescription: tobi-mode, generated from Tobi'\''s Kit (AGENTS.md). Edit the source, then re-run install.sh.\nalwaysApply: true\n---\n'; cat "$ROOT/AGENTS.md"; } > "$CURSOR_RULE"
 echo "wrote $CURSOR_RULE"

@@ -47,5 +47,8 @@ for phrase in 'Does this need to exist at all' 'already exist in this codebase' 
   grep -qi "$phrase" "$ROOT/skills/tobi-mode/principles/laziness-protocol.md" || err "laziness-protocol lost invariant: $phrase"
 done
 
+# every shell script must at least parse
+for f in "$ROOT"/install.sh "$ROOT"/scripts/*.sh; do sh -n "$f" 2>/dev/null || err "$f does not parse"; done
+
 [ $fail -eq 0 ] && echo "ok: $(ls -d "$ROOT"/skills/*/ | wc -l | tr -d ' ') skills, $(ls "$ROOT"/skills/tobi-mode/principles | wc -l | tr -d ' ') principles, $(ls "$ROOT"/skills/tobi-mode/playbooks | wc -l | tr -d ' ') playbooks"
 exit $fail
