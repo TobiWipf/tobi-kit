@@ -39,11 +39,10 @@ Read the leaf file under `principles/` for any principle you apply. Each entry n
 **Core**
 
 - **Laziness protocol** (`laziness-protocol.md`). Sizing any diff. The ladder, the rules, the corner-cut marker. Bias to deletion and the smallest change that solves the problem.
-- **Deep modules** (`deep-modules.md`). Drawing any module or function boundary. Small interface, large hidden functionality. Avoid shallow modules unless the boundary buys something concrete.
+- **Deep modules** (`deep-modules.md`). Drawing any module or function boundary, or reviewing code that is hard to trace. Small interface, large hidden functionality. Count layers and hidden state. Collapse one-caller wrappers.
 - **Foundational thinking** (`foundational-thinking.md`). Before writing logic. Core types and data structures first, scaffold before feature, what concurrent actors share.
 - **Redesign from first principles** (`redesign-from-first-principles.md`). Integrating a new requirement into an existing design. Build what you would have built had it been there on day one.
 - **Subtract before you add** (`subtract-before-you-add.md`). Sequencing an addition, refactor, or rewrite. Remove dead weight first, then build on the simpler base.
-- **Minimize reader load** (`minimize-reader-load.md`). Shaping or reviewing code that is hard to trace. Count layers and hidden state. Collapse one-caller wrappers.
 - **Outcome-oriented execution** (`outcome-oriented-execution.md`). Planned rewrites and migrations with phase boundaries. Converge on the target, do not preserve throwaway compatibility states.
 - **Experience first** (`experience-first.md`). Product, UX, or scope tradeoffs. The consumer's result over implementation convenience.
 - **Exhaust the design space** (`exhaust-the-design-space.md`). A novel decision with no precedent. Two or three competing sketches before committing.

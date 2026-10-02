@@ -57,7 +57,7 @@ Edits to any skill are live in every agent on the next session. No sync step.
 
 `skills/tobi-mode/playbooks/` holds five: investigation, bug fix, feature, refactor, prototype. The mode copies the matched one's steps into the todo list verbatim.
 
-`skills/tobi-mode/principles/` holds 22 one-page rules. The mode indexes them inline and reads a leaf when it applies one. Use their names to steer mid-task. "Use subtract before you add" or "apply prove it works" redirects the agent more precisely than a paragraph.
+`skills/tobi-mode/principles/` holds 21 one-page rules. The mode indexes them inline and reads a leaf when it applies one. Use their names to steer mid-task. "Use subtract before you add" or "apply prove it works" redirects the agent more precisely than a paragraph.
 
 ## Conventions the skills assume
 

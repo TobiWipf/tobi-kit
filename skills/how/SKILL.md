@@ -46,7 +46,7 @@ Write it through `unslop`. Cite real paths. Never invent a symbol or a caller.
 For "are we sure?", "what is wrong with this design", "should this be restructured".
 
 1. Run Explain in full. You must understand the architecture before you judge it.
-2. Screen it against `architect/references/design-red-flags.md` and the `deep-modules`, `minimize-reader-load`, `model-the-domain`, and `boundary-discipline` principles. When the host has subagents, spawn two or three independent critics with the explanation and the file paths, on different models when you can, and merge their findings. Agreement across critics is high-signal.
+2. Screen it against `architect/references/design-red-flags.md` and the `deep-modules`, `model-the-domain`, and `boundary-discipline` principles. When the host has subagents, spawn two or three independent critics with the explanation and the file paths, on different models when you can, and merge their findings. Agreement across critics is high-signal.
 3. Judge as a pragmatic lead, not an aggregator. Sort findings into **Act on** (worth fixing now), **Consider** (real, cost unclear), **Noted** (valid, low priority), **Dismissed** (wrong, missing context, or taste). One line of rationale each.
 
 Present the explanation first, the verdict below it. Someone who only wants to understand the system should not wade through critique.

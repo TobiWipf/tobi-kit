@@ -10,7 +10,7 @@ A refactor that smuggles in a behavior change loses its safety net. If the clean
 4. Subtract before you add. Delete dead weight, collapse one-caller wrappers, drop redundant validators, remove orphan references, then introduce the new shape. A speculative cleanup that "might help" gets reverted.
 5. Move in small behavior-preserving steps, each keeping the pin green. For an API reshape, migrate every caller and delete the old API in the same wave (`migrate-callers-then-delete-legacy-apis`). No shims, no parallel old-and-new paths. Grep every rename against strings, prose, and back-references.
 6. Prove behavior is unchanged on the real artifact. For a larger reshape, a script that diffs old against new output, or a recorded baseline replayed against the new code.
-7. Confirm the change earns its place. The measure is reader load (`minimize-reader-load`): fewer layers between question and answer, less hidden state, fewer one-consumer indirections. If the diff does not lower reader load somewhere, revert it.
+7. Confirm the change earns its place. The measure is reader load (`deep-modules`): fewer layers between question and answer, less hidden state, fewer one-consumer indirections. If the diff does not lower reader load somewhere, revert it.
 8. Rebase into ordered commits. Subtraction, then reshape, then follow-on cleanup, so one revert undoes one slice. Run `ship`.
 
 **Reply:** the structure that changed, the pin you held it against, the equivalence proof, the reader-load delta, what shipped and what you reverted. No new behavior.

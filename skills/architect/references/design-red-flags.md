@@ -1,6 +1,6 @@
 # Design red flags
 
-Screen every candidate before picking. A red flag is a reason to revise or reject the shape. Source: Ousterhout, A Philosophy of Software Design, plus the `deep-modules`, `minimize-reader-load`, and `boundary-discipline` principles.
+Screen every candidate before picking. A red flag is a reason to revise or reject the shape. Source: Ousterhout, A Philosophy of Software Design, plus the `deep-modules` and `boundary-discipline` principles.
 
 ## Shallow module
 
