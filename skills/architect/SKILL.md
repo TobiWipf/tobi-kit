@@ -55,7 +55,7 @@ Deviations are signal, not friction. A function that needs a parameter the sketc
 
 ## Phase E. Scrap when the architecture is wrong
 
-If implementation keeps producing friction the sketch cannot absorb, throw the sketch out (`redesign-from-first-principles`, `fix-root-causes`). The signal is a pattern, not a single hard case.
+If implementation keeps producing friction the sketch cannot absorb, throw the sketch out (`foundational-thinking`, `fix-root-causes`). The signal is a pattern, not a single hard case.
 
 - The same shape of workaround appearing across unrelated code.
 - Several unrelated edge cases that all need special branches.

@@ -13,3 +13,5 @@ At code level, DRY the structure, not every line. Types and data models should c
 Each increment should land a coherent abstraction or deepen one that exists. Do not spread a new capability across callers as special-case coordination.
 
 Subtraction comes before scaffolding: remove dead weight first, then lay foundations.
+
+**New requirement on an existing design.** Do not bolt it on. Redesign as if the requirement had been there from the start, so the result looks like what you would have built had you known on day one. Read every affected file and understand the current design as a whole. Ask what you would build from scratch with this requirement. Propagate the change through every reference: types, docs, examples, rationale sections. Think about the redesign as a whole, then deliver it incrementally. This is how a change preserves option value instead of spending it.

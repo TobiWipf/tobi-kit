@@ -6,7 +6,7 @@ A refactor that smuggles in a behavior change loses its safety net. If the clean
 
 1. Pin the behavior first. Run `how` over the area to learn the contract, then write a characterization test, snapshot, or equivalence harness that captures current behavior before anything moves. The pin makes "refactor" a checkable claim (`prove-it-works`). Type check and lint are not a pin.
 2. Name the structure the code is missing (`model-the-domain`). The reshape must delete branches or invalid states, not add indirection. Boring code stays when the shape is already clear and local.
-3. Name the target shape. What the module layout, types, and call graph should be if built today (`foundational-thinking`, `redesign-from-first-principles`, `deep-modules`). If it crosses a function boundary, `architect`.
+3. Name the target shape. What the module layout, types, and call graph should be if built today (`foundational-thinking`, `deep-modules`). If it crosses a function boundary, `architect`.
 4. Subtract before you add. Delete dead weight, collapse one-caller wrappers, drop redundant validators, remove orphan references, then introduce the new shape. A speculative cleanup that "might help" gets reverted.
 5. Move in small behavior-preserving steps, each keeping the pin green. For an API reshape, migrate every caller and delete the old API in the same wave (`outcome-oriented-execution`). No shims, no parallel old-and-new paths. Grep every rename against strings, prose, and back-references.
 6. Prove behavior is unchanged on the real artifact. For a larger reshape, a script that diffs old against new output, or a recorded baseline replayed against the new code.
