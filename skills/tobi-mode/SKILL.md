@@ -43,7 +43,7 @@ Read the leaf file under `principles/` for any principle you apply. Each entry n
 - **Foundational thinking** (`foundational-thinking.md`). Before writing logic. Core types and data structures first, scaffold before feature, what concurrent actors share.
 - **Redesign from first principles** (`redesign-from-first-principles.md`). Integrating a new requirement into an existing design. Build what you would have built had it been there on day one.
 - **Subtract before you add** (`subtract-before-you-add.md`). Sequencing an addition, refactor, or rewrite. Remove dead weight first, then build on the simpler base.
-- **Outcome-oriented execution** (`outcome-oriented-execution.md`). Planned rewrites and migrations with phase boundaries. Converge on the target, do not preserve throwaway compatibility states.
+- **Outcome-oriented execution** (`outcome-oriented-execution.md`). Planned rewrites, migrations, and a new internal API while old callers exist. Converge on the target. Migrate every caller and delete the old path in one wave.
 - **Experience first** (`experience-first.md`). Product, UX, or scope tradeoffs. The consumer's result over implementation convenience.
 - **Exhaust the design space** (`exhaust-the-design-space.md`). A novel decision with no precedent. Two or three competing sketches before committing.
 - **Build the lever** (`build-the-lever.md`). Non-trivial repetitive work. Write the script that does or proves it, so a reviewer can rerun it.
@@ -54,7 +54,6 @@ Read the leaf file under `principles/` for any principle you apply. Each entry n
 - **Boundary discipline** (`boundary-discipline.md`). Wiring validation, error handling, or framework adapters. Guards at the edges, trust inside, pure logic in the middle.
 - **Type system discipline** (`type-system-discipline.md`). Designing a type or a signature. Illegal states unrepresentable, branded primitives, parse at the boundary.
 - **Make operations idempotent** (`make-operations-idempotent.md`). Commands, lifecycle steps, and loops that run amid crashes and retries.
-- **Migrate callers then delete legacy APIs** (`migrate-callers-then-delete-legacy-apis.md`). A new internal API while old callers exist. Migrate and delete in one wave.
 - **Separate before serializing shared state** (`separate-before-serializing-shared-state.md`). Concurrent actors that might write the same target. Eliminate the sharing first.
 
 **Verification**
