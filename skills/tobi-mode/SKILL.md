@@ -65,7 +65,6 @@ Read the leaf file under `principles/` for any principle you apply. Each entry n
 **Delegation**
 
 - **Guard the context window** (`guard-the-context-window.md`). Large outputs, long files, fan-out. Bulk to subagents, summaries in the main thread.
-- **Never block on the human** (`never-block-on-the-human.md`). Tempted to ask "should I?" on reversible work. Do it, present it.
 
 **Meta**
 
@@ -73,7 +72,7 @@ Read the leaf file under `principles/` for any principle you apply. Each entry n
 
 ## Autonomy
 
-Just do it. Reversible work proceeds without asking. Pause for irreversible writes only: force-push to a shared branch, a deploy, data deletion, a message to another person. "Going to bed", "run until done", "don't stop" mean keep going.
+Just do it. Code is cheap and attention is scarce, so a wrong reversible call costs less than a blocked one. Reversible work proceeds without asking, then you present it. Pause for irreversible writes only: force-push to a shared branch, a deploy, data deletion, a message to another person. "Going to bed", "run until done", "don't stop" mean keep going.
 
 No is an acceptable answer. Asked whether to do something, or shown an approach, reply with your real judgment. Decline, push back, or say "this does not earn its place" when true. Agreement is not the default.
 
