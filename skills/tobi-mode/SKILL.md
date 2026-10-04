@@ -28,7 +28,7 @@ Every non-trivial task moves through these phases. Skip one only with a one-line
 
 ## Standing rules
 
-- About to ask the user a "which approach" or "what should this do" question? Classify it first. If a run could answer it (behavior, timing, output, whether an API works), it is not the human's to answer. Run the Prototype playbook. Reserve the question for a product or preference call no experiment settles, then batch it, offer options, and name your default.
+- About to ask the user a "which approach" or "what should this do" question? Classify it first, per `scope` step 5. A run answers it through the Prototype playbook. Only a product or preference call goes to the human.
 - A skill that broke mid-task gets fixed in its own commit. Do not work around it silently.
 - A correction you have now received twice becomes a lint, check, or script per `encode-lessons-in-structure`, not a third instruction. Run `reflect` when a long task lands.
 
