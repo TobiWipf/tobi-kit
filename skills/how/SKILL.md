@@ -27,7 +27,9 @@ Explorers return structured findings: components found, flow traced, files read,
 
 ### 3. Write the explanation
 
-Use this shape, adapted to the question. Drop a section that does not apply.
+Called from another skill or a playbook? Skip the write-up. Hand back the traced path, the files, and the gotchas.
+
+Otherwise use this shape, adapted to the question. Drop a section that does not apply.
 
 **Overview.** One or two paragraphs. What it is, what it does, why it exists. Enough to decide whether to keep reading.
 
@@ -39,6 +41,8 @@ Use this shape, adapted to the question. Drop a section that does not apply.
 
 **Gotchas.** Non-obvious things that would trip someone. History that explains why something looks odd. Known sharp edges.
 
+**Placement.** For a placement question, end with the answer. The module that should own it, why it owns that decision, and the runner-up.
+
 Write it through `unslop`. Cite real paths. Never invent a symbol or a caller.
 
 ## Critique
@@ -47,7 +51,7 @@ For "are we sure?", "what is wrong with this design", "should this be restructur
 
 1. Run Explain in full. You must understand the architecture before you judge it.
 2. Screen it against `architect/references/design-red-flags.md` and the `deep-modules`, `model-the-domain`, and `boundary-discipline` principles. When the host has subagents, spawn two or three independent critics with the explanation and the file paths, on different models when you can, and merge their findings. Agreement across critics is high-signal.
-3. Judge as a pragmatic lead, not an aggregator. Sort findings into **Act on** (worth fixing now), **Consider** (real, cost unclear), **Noted** (valid, low priority), **Dismissed** (wrong, missing context, or taste). One line of rationale each.
+3. Judge as a pragmatic lead, not an aggregator, per `review/references/lead-judgment.md`. Sort findings into the four buckets `review` defines: Act on, Consider, Noted, Dismissed. One line of rationale each.
 
 Present the explanation first, the verdict below it. Someone who only wants to understand the system should not wade through critique.
 
