@@ -7,9 +7,13 @@ description: Write the failing test before the fix when a bug has a cheap local 
 
 When a bug has a clear, cheap test path, make the broken behavior executable before changing production code. The goal is one focused regression test that fails before the fix and passes after.
 
+For new behavior, the same loop. The failing test encodes the done-predicate from `scope`.
+
 Do not force a test that would be impractical. Broad harness setup, brittle mocks, slow end-to-end infrastructure, production-only state, vague reproduction, or large unrelated fixture churn all mean skip the new test and use the closest useful verification instead.
 
 ## Workflow
+
+Called from Bug fix? The repro and cause are done. Start at step 2.
 
 1. **Understand the bug.** Intended behavior, current behavior, affected path, the smallest observable reproduction.
 2. **Choose the narrowest executable check.** The closest unit, component, or integration test already used for that code path. If no practical path is obvious, do not build one from scratch to satisfy the workflow.
@@ -18,6 +22,7 @@ Do not force a test that would be impractical. Broad harness setup, brittle mock
 5. **Fix the bug.** The smallest production change that satisfies the intended behavior and preserves nearby contracts.
 6. **Rerun the test.** Confirm it passes.
 7. **Run nearby validation.** Adjacent tests, type check, lint, when the change has broader risk.
+8. **Commit red to green, every commit green.** The test lands first, marked as an expected failure with the runner's marker (`test.fails` in Vitest, `test.failing` in Jest), so it passes only while the bug exists. The fix commit removes the marker. CI and `git bisect` never see a failing commit, and the diff still shows broken, then fixed.
 
 ## When a failing test is impractical
 
