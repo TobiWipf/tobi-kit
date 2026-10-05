@@ -1,6 +1,6 @@
 ---
 name: blast-radius
-description: Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it is safe because of by running real code instead of writing it up. Use for "blast radius of X", "what could this break", or reviewing a small diff you do not trust.
+description: Find what a change could break somewhere else before it ships, beyond the diff, and prove the one fact it is safe because of by running real code instead of writing it up. Use for "blast radius of X", "what could this break", "is this safe to ship", or any question about effects outside the diff.
 ---
 
 # Blast radius
@@ -27,7 +27,7 @@ Any safety fact you cannot get to step 4, say so out loud. Do not write it up as
 
 ## Steps
 
-1. Read the change. The diff, the symbols it adds, changes, and deletes, and what it now does differently, including the part the diff does not spell out. Use `why` to pull the PR and commits.
+1. Read the change. The diff, the symbols it adds, changes, and deletes, and what it now does differently, including the part the diff does not spell out. Use `why` to pull the PR and commits when there is one.
 2. Find the one fact it is safe because of. Most changes that look scary are safe because of a single fact, like "this call only drops already-dead cache entries and does nothing else". Find that fact. If it holds, most of the scary cases die at once. Spend your time here, not on a long list of maybes.
 3. Look where grep stops. Read the source of the library you call, and check its pinned version and any local patch. Work out when things run: microtasks, unmount and teardown, one framework's lifecycle against another's. Follow what a symbol search misses: the JSON an API returns, a DB column, a wire format, another language reading the same bytes, a feature flag, code three hops downstream.
 4. Be honest about each risk. Give it a real chance of happening and a real cost if it does. Keep the risks you confirmed. List the ones you checked and cleared separately. Cite a real `file:line`. A search that finds nothing is still an answer. Never make up a caller or an API.
@@ -40,7 +40,7 @@ Any safety fact you cannot get to step 4, say so out loud. Do not write it up as
 - **The one fact it is safe because of.** State it, say which step you got it to, and show the proof. If you could not prove it, write unproven.
 - **Risks.** Only the real ones. Each names how it breaks, the `file:line`, how likely and how bad, and how to check. Paste the proof for the ones that matter.
 - **Cleared.** What you checked and why it is fine.
-- **Before you merge.** The cheapest test or repro that catches the real bug, including the script you wrote.
+- **Before you merge.** The cheapest test or repro that catches the real bug, including the script you wrote. If the safety fact can regress, the script becomes a test. Otherwise it stays in scratch and its path goes here.
 
 Write it through `unslop`. Cite real code.
 

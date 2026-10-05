@@ -1,6 +1,6 @@
 ---
 name: review
-description: Adversarial code review that hunts for bugs, wrong-layer fixes, and above all what to delete. Independent reviewers on different models when available, then a lead verdict sorted into act on, consider, noted, dismissed. Use for any code review request, /review, "review this", "review for over-engineering", "what can we delete", "tear this apart", "find blind spots", or before shipping a contested or large diff. Reports only, applies nothing.
+description: Adversarial code review that hunts for bugs, wrong-layer fixes, and above all what to delete. Independent reviewers on different models when available, then a lead verdict sorted into act on, consider, noted, dismissed. Use for any code review request, /review, "review this", "review for over-engineering", "what can we delete", "tear this apart", "find blind spots", or before shipping a contested or large diff. For what a change breaks outside the diff, use `blast-radius`. Reports only, applies nothing.
 ---
 
 # Review
