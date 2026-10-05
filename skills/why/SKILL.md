@@ -9,7 +9,9 @@ description: Find out why code is the way it is, from history and the record rat
 
 ## Sources, cheapest first
 
-1. **Git.** `git log -S '<symbol>' --oneline`, `git log --follow <file>`, `git blame -L<a>,<b> <file>`, then the commit messages and diffs that introduced or last changed the shape. Look for the commit that added the odd thing and the one before it. Reverts are the loudest evidence.
+Regression with a repro and a known-good commit? `git bisect run <repro>` before reading any log. It finds the commit that broke the behavior, not the one that touched the text.
+
+1. **Git.** `git log -L :<function>:<file>` for one function's history, `git log -S '<symbol>' --oneline` (or `-G '<regex>'` when the symbol moved without being added or removed), `git log --follow <file>`, `git blame -L<a>,<b> <file>`, then the commit messages and diffs that introduced or last changed the shape. Look for the commit that added the odd thing and the one before it. Reverts are the loudest evidence.
 2. **Pull requests.** `gh pr list --search '<term>'`, `gh pr view <n> --comments`. The review thread is where the alternative was rejected.
 3. **Linked issues and tickets.** Anything the commits or PRs reference. The issue tracker MCP if one is connected.
 4. **Docs in the repo.** ADRs, RFCs, `docs/`, READMEs near the code, comments that cite an issue.
