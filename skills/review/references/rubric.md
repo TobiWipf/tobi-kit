@@ -4,6 +4,8 @@ Review through whichever lenses apply. Not every lens fits every change. Read th
 
 ## Correctness
 
+Digest of `make-operations-idempotent`, `separate-before-serializing-shared-state`. Edit a principle, update this lens.
+
 Does the code do what the intent says?
 
 - Edge cases: empty inputs, nil or undefined, boundary values, concurrent access.
@@ -18,6 +20,8 @@ When you find a potential bug, trace the execution path. Show the call chain tha
 
 ## Root cause or symptom
 
+Digest of `fix-root-causes`, `encode-lessons-in-structure`. Edit a principle, update this lens.
+
 Is the code fixing the problem or papering over it?
 
 - A guard that masks an invariant violation.
@@ -29,6 +33,8 @@ Is the code fixing the problem or papering over it?
 Ask why the workaround is needed. Name the proper fix and its layer.
 
 ## Structure
+
+Digest of `deep-modules`, `boundary-discipline`, `model-the-domain`, `foundational-thinking`, `outcome-oriented-execution`. Edit a principle, update this lens.
 
 Does the code fit the system it lives in?
 
@@ -43,6 +49,8 @@ Do not penalize simple code for lacking abstraction. Premature abstraction is wo
 
 ## Verification
 
+Digest of `prove-it-works`, `sequence-verifiable-units`. Edit a principle, update this lens.
+
 Can you tell it works from reading it?
 
 - Tests that test behavior, not implementation.
@@ -51,6 +59,8 @@ Can you tell it works from reading it?
 - The real thing checked, not a proxy (file mtime, cached state, a delegate's summary).
 
 ## Complexity budget
+
+Digest of `laziness-protocol`, `subtract-before-you-add`, `experience-first`. Edit a principle, update this lens.
 
 Is the complexity justified by what the code accomplishes?
 

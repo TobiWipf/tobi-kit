@@ -1,6 +1,6 @@
 ---
 name: review
-description: Adversarial code review that hunts for bugs, wrong-layer fixes, and above all what to delete. Independent reviewers on different models when available, then a lead verdict sorted into act on, consider, noted, dismissed. Use for /review, "review this", "review for over-engineering", "what can we delete", "tear this apart", "find blind spots", or before shipping a contested or large diff. Reports only, applies nothing.
+description: Adversarial code review that hunts for bugs, wrong-layer fixes, and above all what to delete. Independent reviewers on different models when available, then a lead verdict sorted into act on, consider, noted, dismissed. Use for any code review request, /review, "review this", "review for over-engineering", "what can we delete", "tear this apart", "find blind spots", or before shipping a contested or large diff. Reports only, applies nothing.
 ---
 
 # Review
@@ -15,7 +15,7 @@ From context. The files or diff the user pointed at. Otherwise `git diff <base>.
 
 ## 2. Intent
 
-One paragraph. What is this code trying to accomplish, from the user's message, the commit messages, the PR body, and the code. Reviewers judge whether the work achieves the intent well, not whether the intent is right. Unsure of the intent? Ask before spawning anyone.
+One paragraph. What is this code trying to accomplish, from the user's message, the commit messages, the PR body, and the code. Reviewers judge whether the work achieves the intent well, not whether the intent is right. Unsure of the intent? Write your best guess, mark it *assumed*, and proceed. The Intent section is where the user corrects it. Ask first only when there is no commit message, no PR, and no conversation to read it from.
 
 ## 3. Reviewers
 
@@ -50,12 +50,12 @@ Parse every finding. Merge duplicates and note which reviewers raised each. Cons
 
 You are a pragmatic senior engineer with the full context the reviewers lacked. Read `references/lead-judgment.md`. Sort every finding.
 
-- **Act on.** Real issues affecting correctness, security, or maintainability given the actual goal. These would block a real PR. More than five and you are not filtering.
+- **Act on.** Real issues affecting correctness, security, or maintainability given the actual goal. These would block a real PR.
 - **Consider.** Legitimate, but you are not sure it outweighs the cost right now.
 - **Noted.** Valid but not actionable now.
 - **Dismissed.** Wrong, taste, hypothetical, or missing context. Say why in one line. This section is how the user overrides you.
 
-Never dismiss a finding for being uncomfortable. Be slowest to dismiss `bug:` and `security:`. A single smoke test or `assert`-based self-check is the minimum, not bloat. Never flag it for deletion.
+Calibration lives in `references/lead-judgment.md`. A single smoke test or `assert`-based self-check is the minimum, not bloat. Never flag it for deletion.
 
 ## Output
 
@@ -81,6 +81,6 @@ Each with a one-line reason.
 Where reviewers agreed, where they diverged, what the pattern says.
 
 ### Net
-`net: -<N> lines possible` from the delete, stdlib, native, yagni, and shrink findings. If the diff is already lean, say `Lean already. Ship.`
+`net: -<N> lines possible` from the delete, stdlib, native, yagni, and shrink findings in Act on and Consider. Dismissed and Noted findings do not count. If the diff is already lean, say `Lean already. Ship.`
 
 **Reply:** the verdict above. Apply nothing.
