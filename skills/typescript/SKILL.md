@@ -5,7 +5,9 @@ description: TypeScript rules for any .ts or .tsx file. Discriminated unions ove
 
 # TypeScript
 
-Apply the `type-system-discipline` principle first. This skill grounds it in TypeScript syntax. Examples in `references/patterns.md`.
+Apply the `type-system-discipline` principle first (`tobi-mode/principles/type-system-discipline.md`). This skill grounds it in TypeScript syntax. Examples in `references/patterns.md`.
+
+Check the repo's tsconfig and lint config first. A rule a switch already enforces needs no attention: `strict`, `noUncheckedIndexedAccess`, and the typescript-eslint rules `no-explicit-any`, `consistent-type-assertions`, `switch-exhaustiveness-check`. When one is off, propose turning it on instead of policing it in review. Do not add the dependency unasked.
 
 | Rule | Summary |
 |------|---------|
@@ -21,6 +23,12 @@ Apply the `type-system-discipline` principle first. This skill grounds it in Typ
 | Exhaustiveness | `const _exhaustive: never = x` in the default arm so a new variant fails compilation. |
 | Boundary validation | Parse where data crosses in, into a named domain type. `Record<string, unknown>` stops at that parse. Trust types inside. Per `boundary-discipline`. |
 | Derive, do not duplicate | `Pick`, `Omit`, `Parameters`, `ReturnType`, `Awaited`, `typeof`, schema inference, before declaring a parallel interface. |
+
+## Beyond types
+
+Not type rules, but this is the skill every `.ts` file loads.
+
+| Rule | Summary |
+|------|---------|
 | Object args | Pass an object, not positional args, when there are more than two. Skip on hot paths. |
-| Real tests | Do not mock what you can run. Mock only what you cannot run locally. |
 | No `console.log` in shipped code | Structured logger with enough context to debug from an id. |

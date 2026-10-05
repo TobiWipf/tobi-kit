@@ -1,6 +1,6 @@
 # TypeScript patterns
 
-Code examples for each rule in `SKILL.md`. The underlying principles are language-agnostic; see the **type-system-discipline** and **boundary-discipline** principle skills.
+Code examples for each rule in `SKILL.md`. The underlying principles are language-agnostic; see the `tobi-mode/principles/type-system-discipline.md` and `tobi-mode/principles/boundary-discipline.md` principles.
 
 ## Branded types
 
@@ -156,18 +156,16 @@ Every `as` is a potential runtime crash. Cast only after the type system has ver
 // Don't
 const user = data as User;
 
-// Do. Earn the cast at the boundary.
-function parseUser(data: unknown): User {
-  if (typeof data !== "object" || data === null) {
-    throw new Error("expected object");
+// Do. Narrow instead. `in` narrows an unknown object, so no cast is needed.
+function readId(data: unknown): string {
+  if (typeof data === "object" && data !== null && "id" in data && typeof data.id === "string") {
+    return data.id;
   }
-  if (!("id" in data) || typeof (data as Record<string, unknown>).id !== "string") {
-    throw new Error("expected id");
-  }
-  // ... validate all fields
-  return data as User; // OK, earned cast after full validation
+  throw new Error("expected { id: string }");
 }
 ```
+
+For a whole payload, use a schema (see Schemas before hand-rolled guards). A hand-rolled guard per field is the drift the schema prevents.
 
 When refactoring an `as` out of existing code, identify why TypeScript can't infer:
 
@@ -258,9 +256,9 @@ const config = { theme: "dark", cols: 3 } satisfies Config;
 
 ## Boundary validation
 
-Validate once where data crosses in; trust types inside. See the **boundary-discipline** principle skill.
+Validate once where data crosses in; trust types inside. See the `boundary-discipline` principle.
 
-- **Wire formats** (proto, JSON-RPC): parse with `ignoreUnknownFields` so forward-compatible changes don't break old clients.
+- **Unknown fields:** strip them, do not reject them, so a new field from the server does not break an old client. Zod objects strip by default; `.strict()` opts out.
 - **Persisted JSON:** versioned blob with a try/catch around the parse.
 - **Don't re-validate** deep in call chains.
 
