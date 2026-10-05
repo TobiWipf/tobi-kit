@@ -20,6 +20,9 @@ LOC, cyclomatic complexity, and "clean architecture" are proxies. Reader load is
 - Learning the interface does not spare the caller from learning the implementation.
 - A class or file exists to hold one function that forwards to another.
 - A wrapper with one caller, an adapter with no second implementation, or indirection introduced for a future that never came.
+- A pass-through variable. A value threaded through layers that never use it, only to reach one that does.
+- Conjoined methods. Two methods a reader cannot understand without flipping between them. They are one method.
+- Overexposure. Callers must learn rarely used features to use the common ones.
 
 **The pattern:**
 
@@ -30,6 +33,9 @@ LOC, cyclomatic complexity, and "clean architecture" are proxies. Reader load is
 - Information hiding. One design decision lives in one module. A representation, format, or protocol detail that shows up in two modules is leakage. Parse it into a domain type at the boundary and keep it there.
 - Group by knowledge, not by execution order. Separate load, validate, transform, and save modules repeat the same invariants across four boundaries. That is temporal decomposition. One module owns the representation and every time it is touched.
 - Shrink state scope. Prefer pure functions (returns over mutations), locals over fields, fields over module state, and module state over globals. Derive instead of sync.
+- Move the consumer to the value. Kill a pass-through variable with a context the deep layer already has, or by moving the consumer closer to the producer. Threading a new signal through types, schemas, and pipelines is the `laziness-protocol` "question the threading" tell.
+- Split a method only when each piece is understandable alone.
+- Defaults make the common case a single call. Rare configuration goes behind a second, optional entry point, not into every caller's argument list.
 - Name the invariant at the boundary, not in every consumer, so the reader learns it once.
 - Before adding a layer or a piece of state, ask whether it reduces reader load somewhere else by at least as much.
 

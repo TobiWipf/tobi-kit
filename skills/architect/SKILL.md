@@ -7,23 +7,31 @@ description: Design before implementing. Write the caller's usage first, then ty
 
 Design it twice before you build it once. Sketch the caller's usage, then types, signatures, and module boundaries with `not implemented` bodies. Produce at least two structurally distinct candidates, screen them against the red flags, pick a base, graft the best of the rest into it, then fill in code against the chosen sketch. When implementation proves the sketch wrong, throw the sketch out.
 
+## Size it
+
+- **Small.** A new function or signature in an established pattern. Write the caller's usage, one sketch, and one line naming the alternative and why it lost. No template, no fan-out. Then implement.
+- **Large.** A new module, a public API, a data model, or a one-way door. Run every phase below.
+
+When in doubt, start small. Friction during implementation (Phase E) promotes it to large.
+
 ## Start
 
-Open a todo list with one entry per phase.
+For a large design, open a todo list with one entry per phase.
 
 1. Ground
 2. Sketch
 3. Pick and graft
 4. Implement
-5. Scrap if wrong
+
+Phase E is not a todo. It applies whenever its signals show up.
 
 ## Phase A. Ground
 
-Build a real mental model of every system the new code touches. Run `how` over the relevant areas, in Critique mode when existing structure is the constraint. When the design moves ownership or layering, run `why` on the existing shape so the old rationale becomes a constraint instead of a guess.
+Called after `scope`? Reuse its predicate and constraints. Do not re-run what it ran.
 
-Naming a file is not grounding. Produce the traced model `how` prescribes. Skip Phase A only for genuinely greenfield work with nothing to integrate.
+Otherwise build a real mental model of every system the new code touches. Run `how` over the relevant areas, in Critique mode when existing structure is the constraint. When the design moves ownership or layering, run `why` on the existing shape so the old rationale becomes a constraint instead of a guess. Naming a file is not grounding. Produce the traced model `how` prescribes. Skip grounding only for genuinely greenfield work with nothing to integrate.
 
-Restate the done-predicate from `scope` before sketching. The design serves it.
+Either way, state the done-predicate before sketching. The design serves it.
 
 ## Phase B. Sketch
 
@@ -70,6 +78,8 @@ When you scrap: re-run `how` over what was built so the lessons enter as inputs,
 
 ## Outputs
 
-The chosen design package per `references/rationale-template.md`, including the usage sketch and the pick-and-graft record. One file with new types and signatures for a small change. A module map plus type definitions for larger work.
+The type sketch lands as code: new types and signatures for a small change, a module map plus type definitions for larger work. It can be its own commit.
+
+The rationale per `references/rationale-template.md` goes in the reply, and later in the PR body. Never write it to a design file unless the user asks for one.
 
 **Reply:** the caller's usage, the chosen shape and why, the alternatives and why they lost, the red flags you screened out, open questions. Then the implementation, or the checkpoint when one was asked for.
