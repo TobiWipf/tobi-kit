@@ -92,7 +92,7 @@ Write it clean the first time. A cleanup pass afterward has been measured to fai
 
 ## Comments
 
-Same rule as the reply. Do not write the narrating comment in the first place. The case that keeps slipping through is a script that announces its phases (`// Phase 1: add cards`). Delete it. The assertion or the log string is the documentation. `assert(ok, 'persisted across restart')` needs no comment above it. Keep a comment only for a non-obvious why the code cannot show, and prefer making the code show it. This applies to every file you or a delegate produce.
+Write only comments that pass the keep list in `no-comments`. A deliberate internal tradeoff is a `tobi:` marker, not prose. This applies to every file you or a delegate produce.
 
 ## Playbooks
 

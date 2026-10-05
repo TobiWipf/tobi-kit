@@ -1,6 +1,6 @@
 ---
 name: no-comments
-description: Strip comments that narrate, apologize, or justify workarounds, and flag the code they were covering for. Run before review on any diff, or for "no comments", "clean up the comments", "strip comments", "too many comments". Deletes comments, never edits application code.
+description: Strip comments that narrate, apologize, or justify workarounds, and flag the code they were covering for. Run before review on any diff, or for "no comments", "clean up the comments", "strip comments", "too many comments". Deletes comments and applies in-diff renames. Every other fix goes back to the build step as a flag.
 ---
 
 # No comments
@@ -32,20 +32,20 @@ Everything else. In particular:
 - Banners and section dividers.
 - Commented-out code. Git has it.
 - Workaround sermons. `// this is a hack but`, `// fine for now`, `// too risky to change`. A justification longer than the code it excuses means the code is wrong. Delete the comment and flag the symbol `root-cause` for the fix the comment was avoiding.
-- `IMPORTANT`, `do not remove`, `NOTE`. Scent, not conviction. Read the nearby code. When the claim is not obvious there, run `how` or `why` on the symbol. A constraint that proves real and external gets encoded (a type, a test, a lint rule) and the comment deleted. A constraint that proves internal gets the `reshape` flag. Unproven gets deleted.
-- `eslint-disable`, `@ts-ignore`, `@ts-expect-error`, and similar. Look up the rule. When it catches real bugs or protects correctness, kill the suppression and flag the symbol `root-cause`.
+- `IMPORTANT`, `do not remove`, `NOTE`. Scent, not conviction. Read the nearby code. When the claim is not obvious there, run `how` or `why` on the symbol. A constraint that proves real and external gets deleted and flagged for encoding (a type, a test, a lint rule). A constraint that proves internal gets the `reshape` flag. Unproven gets deleted.
+- `eslint-disable`, `@ts-ignore`, `@ts-expect-error`, and similar. Look up the rule. When it catches real bugs or protects correctness, kill the suppression and flag the symbol `root-cause`. When the external-dependency clause applies, keep `@ts-expect-error` with a reason, since it errors once the upstream fix lands. `@ts-ignore` always goes.
 - Stale comments that describe a previous version of the code.
 - TODOs with no owner, issue, or trigger. A TODO that names a trigger converts to a `tobi:` marker. The rest go.
 
 ## Steps
 
 1. Walk every comment in scope against the two lists. Delete kills. Never polish a kill into a shorter alibi.
-2. For each `reshape` or `root-cause` flag, apply the smallest in-scope fix that makes the comment unnecessary. A rename, a dropped parameter, the real API instead of the workaround. When the fix needs a new shape, run `architect` once for the set and implement. When the root cause is out of scope, apply the smallest in-scope fix and report the rest open.
-3. For each constraint comment that proved real, offer the cheapest encoding (type, runtime check, test, lint). Encode it, then delete the comment. When encoding is out of scope, delete the comment and report the constraint open.
-4. Report. Files touched, deletions, flags with one line each, fixes applied, constraints encoded, constraints left open, keeps and the clause that saved each.
+2. For a `reshape` flag that a rename inside the diff resolves, apply the rename. Nothing else changes code here.
+3. List every other flag as a fix for the build step. Each `reshape` or `root-cause` with the smallest fix that makes the comment unnecessary (a dropped parameter, the real API instead of the workaround). Each constraint that proved real with its cheapest encoding (type, runtime check, test, lint). The calling playbook applies them, then verifies. Run standalone, the list is the deliverable.
+4. Report. Files touched, deletions, renames applied, the fix list with one line each, keeps and the clause that saved each.
 
 ## Boundaries
 
-Never write application code beyond the flagged fixes. Never restore a deleted comment without a keep-list clause and proof the clause applies. Never touch files outside scope.
+Never write application code beyond in-diff renames. Never restore a deleted comment without a keep-list clause and proof the clause applies. Never touch files outside scope.
 
 **Reply:** the report from step 4. Short.
