@@ -2,26 +2,25 @@
 
 Verify every task output by checking the real thing directly. Do not infer from proxies, self-reports, or "it compiles."
 
-**Why:** Unverified work has unknown correctness. Indirect verification (file mtimes, output freshness, agent self-reports, cached screenshots) feels cheaper than direct observation. Acting on a wrong inference costs far more than checking the source.
+**Why:** Unverified work has unknown correctness. Indirect verification (file mtimes, output freshness, agent self-reports, cached screenshots) feels cheaper than direct observation. Acting on a wrong inference costs far more than checking the source. A writeup that sounds right reads as convincing whether or not it is true.
 
-**Pattern:** After completing any task, ask: "how do I prove this actually works?"
+## How sure are you
 
-Check the real thing, not a proxy:
-- Check process liveness directly, not indirectly through derived state
-- Read the actual value, not a cached or derived representation
-- When verification fails, suspect the observation method before suspecting the system
+Every claim sits somewhere on this ladder. Get it as far down as is cheap, and say where it stopped.
 
-Code and features:
-1. Build it (necessary but not sufficient)
-2. Run it and exercise the actual feature path
-3. Check the full chain: does data flow from input to output?
-4. For integrations, test the full communication path end-to-end
+1. You said so. Worthless on its own.
+2. You pointed at the line. A real `file:line`, or the library's own source.
+3. You showed the bad case cannot happen. You walked the failure step by step and it does not reach.
+4. You ran it. A script or test that calls the real code and fails loud if you are wrong.
+5. You reproduced it in the running app, on the surface where the user meets it.
 
-Delegation: trust artifacts, not self-reports.
-When verifying delegated work, inspect the actual output artifact (git diff, file contents, runtime behavior), not the delegate's summary. Agents report what they intended, not always what happened.
+Step 4 is the bar for "works". A claim stuck at 3 or below is unproven. Say so out loud, never round up.
 
-## Script the check when you can
+## The standard
 
-The strongest proof is a deterministic script that re-runs the same comparison, not a one-time eyeball. Write the script, run it, and keep its output as an artifact a reviewer can re-run instead of trusting your word. A script comparing the old and new compiled output catches what a glance misses.
+- The real thing, not a proxy. Read the actual value, not a cached or derived one. The artifact, not a delegate's summary. Agents report what they intended, not always what happened.
+- When a check passes too easily, suspect the observation before the system.
+- A deterministic script beats a one-time eyeball. A reviewer can rerun it instead of trusting your word.
+- Keep the evidence visible for the human. Commit it only when the trail has to be auditable later, like a big port or migration.
 
-Keep the artifact visible for the human. Commit it only for large or complex work where the trail has to be auditable later, like a big port or migration. Most work just needs it visible, not committed.
+The `verify` skill is the procedure. `blast-radius` applies the ladder to the one fact a change is safe because of.

@@ -15,15 +15,7 @@ A blast-radius writeup that sounds right is worthless. It reads as convincing wh
 
 ### How sure are you
 
-For each fact the change's safety depends on, get it as far down this list as is cheap, and say where it stopped.
-
-1. You said so. Worthless on its own.
-2. You pointed at the line. A real `file:line`, or the library's own source.
-3. You showed the bad case cannot happen. You walked the failure step by step and it does not reach.
-4. You ran it. A script or test that calls the real code and fails loud if you are wrong.
-5. You reproduced it in the running app.
-
-Any safety fact you cannot get to step 4, say so out loud. Do not write it up as settled. Step 4 is usually one small script that imports the same library the app ships and calls the exact function you are worried about.
+Grade each fact the change's safety depends on with the evidence ladder in `tobi-mode/principles/prove-it-works.md`, and say where it stopped. Any safety fact you cannot get to step 4, say so out loud. Step 4 is usually one small script that imports the same library the app ships and calls the exact function you are worried about.
 
 ## Steps
 

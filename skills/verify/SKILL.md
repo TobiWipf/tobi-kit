@@ -5,14 +5,14 @@ description: Prove a change works against the real artifact before calling it do
 
 # Verify
 
-Unverified work has unknown correctness. "It compiles", a green type check, a subagent's summary, and a file's mtime are proxies. Check the real thing.
+Unverified work has unknown correctness. "It compiles", a green type check, a subagent's summary, and a file's mtime are proxies. Check the real thing. The standard and its evidence ladder live in `tobi-mode/principles/prove-it-works.md`.
 
 ## The bar
 
 1. Build it. Necessary, not sufficient.
 2. Run the actual feature path with the actual inputs. For a bug fix, the original repro. For a feature, the done-predicate from `scope`. For a refactor, the pin.
 3. Check the full chain. Data flows from input to output, on the surface where the user meets it. A unit test shows branch behavior, not bug absence.
-4. Read the actual value. Not a cached or derived representation. Process liveness directly, not through a status file. Rendered output, not the template.
+4. Read the actual value. Not a cached or derived representation. Process liveness directly, not through a status file. Rendered output, not the template. For UI, drive the real app with the host's browser or run tool and screenshot the state the claim is about. A screenshot you did not look at is not evidence.
 5. For delegated work, inspect the artifact (`git diff`, file contents, runtime behavior), never the delegate's report. Agents report what they intended.
 
 When a check passes too easily, suspect the observation before the system. A blank screenshot passes a lazy gate. A test that cannot fail proves nothing. Make it fail once on purpose when you are unsure it can.
@@ -25,7 +25,7 @@ Non-trivial logic leaves one runnable check behind, the smallest thing that fail
 
 ## Verdicts
 
-`VERIFIED`, `NOT VERIFIED`, or `INCONCLUSIVE`, per claim. Inconclusive is not a pass. A different surface than the one that matters is not a pass. Never hide a negative. When you cannot verify cheaply, say so and name the cheapest thing that would.
+`VERIFIED`, `NOT VERIFIED`, or `INCONCLUSIVE`, per claim. `VERIFIED` means the claim reached step 4 or 5 of the ladder on its own surface. `NOT VERIFIED` means you ran it and it failed. `INCONCLUSIVE` means it stopped at step 3 or below. Inconclusive is not a pass. A different surface than the one that matters is not a pass. Never hide a negative. When you cannot verify cheaply, say so and name the cheapest thing that would.
 
 ## Report
 
