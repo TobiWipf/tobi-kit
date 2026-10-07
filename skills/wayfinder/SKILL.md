@@ -1,14 +1,14 @@
 ---
 name: wayfinder
-description: Find the route to a goal the user can name but does not know how to reach, across as many sessions as it takes. Charts what must be decided in a map at docs/plans/<topic>.md, resolves one piece per session, and hands a clear route to scope. Plans, never builds. User-invoked only, for /wayfinder, "I want to do X and do not know how", "help me figure out how to get there". For an approach the user already has, use `grill`.
+description: Find the route to a goal the user can name but does not know how to reach, across as many sessions as it takes. Charts what must be decided in a map at docs/plans/<topic>.md, resolves one of the user's decisions per session, and hands a clear route to scope. Plans, never builds. User-invoked only, for /wayfinder, "I want to do X and do not know how", "help me figure out how to get there". For an approach the user already has, use `grill`.
 disable-model-invocation: true
 ---
 
 # Wayfinder
 
-The user knows where they want to end up and not how to get there. Your job is to find the route, not to charge at the destination. The output is a map whose every piece is decided, handed to `scope`. Never code. The pull to start building is the sign the map is done.
+The user knows where they want to end up and not how to get there. Your job is to find the route, not to charge at the destination. The output is a map whose every piece is decided, handed to `scope`. No production code. The pull to start building is the sign the map is done.
 
-Invoking this skill suspends Autonomy. The user makes every decision. The map is the only file you write.
+Invoking this skill suspends Autonomy. The user makes every decision. The map is the only file you write in the repo.
 
 Already have an approach to test? That is `grill`, not this. Say so and stop.
 
@@ -18,6 +18,8 @@ Already have an approach to test? That is `grill`, not this. Say so and stop.
 
 ```markdown
 # <topic>
+
+Status: open
 
 ## Destination
 <what done looks like, one or two lines>
@@ -45,14 +47,15 @@ Out of scope never comes back unless the user redraws the destination.
 
 The first session. Charting is the whole session's work.
 
-1. Name the destination with the user. It fixes the scope every piece is measured against.
+1. Name the destination with the user. It fixes the scope every piece is measured against. Called from `grill`? Copy its settled decisions into Decided first, so nothing is asked twice.
 2. Survey breadth-first. Fan out across the whole space, not deep on one thread, and sort what you find into pieces, fog, and out of scope.
 3. No fog at all, and the whole route fits one session? There is no map to keep. Say so, and hand to `grill` or `scope`.
-4. Write the map, commit it, and stop.
+4. Resolve every piece that is only a fact now, with parallel subagents, and record each in Decided.
+5. Write the map, commit it, and stop.
 
 ## Work the map
 
-`/wayfinder docs/plans/<topic>.md`. One piece per session.
+`/wayfinder docs/plans/<topic>.md`. One decision of the user's per session. A piece that is only a fact does not count. Resolve it whenever it appears.
 
 1. Read the map. Never re-ask anything in Decided.
 2. Take the piece the user names, or the first in Next pieces whose dependencies are decided.
@@ -66,6 +69,6 @@ The first session. Charting is the whole session's work.
 
 ## Done
 
-Next pieces and Not yet specified are both empty. The route is clear. Hand the map to `scope`, whose predicate and constraints the decisions fill. The map is deleted in the commit that ships the work it planned.
+Next pieces and Not yet specified are both empty. The route is clear. Set `Status: done` and commit the map. It stays as the record of why the route looks the way it does, for `why` to find later. Hand it to `scope`, which splits it into tasks and scopes the first.
 
 **Reply:** after charting, the destination and the first pieces. After a session, the decision made and what it unlocked.

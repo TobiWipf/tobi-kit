@@ -16,7 +16,7 @@ No approach yet, only a goal and no idea how to get there? That is `wayfinder`, 
 
 Restate in two lines what the approach is and what it is for. The goal matters more than the approach. An approach is only right relative to the need it serves.
 
-Then find what it rests on. The load-bearing assumptions, the ones that would sink the approach if wrong. And sketch one or two structurally different ways to meet the same goal (`exhaust-the-design-space`). Not flavors of the user's approach. A real alternative is what makes "is this right?" answerable.
+Then find what it rests on. The load-bearing assumptions, the ones that would sink the approach if wrong. And sketch one or two structurally different ways to meet the same goal. Not flavors of the user's approach. A real alternative is what makes "is this right?" answerable.
 
 ## The tree and the frontier
 
