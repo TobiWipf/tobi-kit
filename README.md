@@ -10,7 +10,7 @@ Three skill sets did the heavy lifting. Read them if you want the full versions.
 
 - **[pstack](https://github.com/cursor/plugins/tree/main/pstack)** by Lauren Tan (poteto). The lifecycle, the playbooks, the 21 principles, `how`, `why`, `architect`, `blast-radius`, `no-comments`, `unslop`, `technical-writing`, `reflect`, and the adversarial shape of `review`. Its fleet machinery (swarm, autopilot, orchestrate, babysit, forensics, per-role model routing) is left out.
 - **[ponytail](https://github.com/DietrichGebert/ponytail)** by Dietrich Gebert. The lazy-senior-dev stance, the seven-rung ladder, "read fully, then be lazy", one runnable check per non-trivial change, the corner-cut marker, and the delete, stdlib, native, yagni, and shrink tags in `review`. Its ten host adapter files are replaced by `install.sh`.
-- **[skills](https://github.com/mattpocock/skills)** by Matt Pocock. The design-tree interview in `grill`: frontier rounds, recommended answers, facts looked up rather than asked, and prototyping what talk cannot settle.
+- **[skills](https://github.com/mattpocock/skills)** by Matt Pocock. The design-tree interview in `grill` (frontier rounds, recommended answers, facts looked up rather than asked, prototyping what talk cannot settle) and the map in `wayfinder` (destination, fog of war, one decision per session, plan never build). Its issue-tracker machinery is left out.
 
 Plus Ousterhout's A Philosophy of Software Design for the `deep-modules` principle and the design red flags in `architect`.
 
@@ -39,7 +39,8 @@ Edits to any skill are live in every agent on the next session. No sync step.
 
 | Phase | Skill | Use it when |
 |---|---|---|
-| Scope | `grill` | You want to think a plan through before anything is built. User-invoked only. Rounds of questions, each with a recommended answer. |
+| Scope | `grill` | You have an approach and want it taken apart. Tests its assumptions against real alternatives, ends in keep, adjust, or change course. User-invoked only. |
+| Scope | `wayfinder` | You have a goal and no route. Charts a map in `docs/plans/`, decides one piece per session, hands a clear route to `scope`. User-invoked only. |
 | Scope | `scope` | A vague ask. Produces the done-predicate, the constraints the code imposes, what is out, and which questions to settle by running versus asking. |
 | Scope | `how` | You need to know how something works before you change it. Critique mode reviews the architecture. |
 | Scope | `why` | You need to know why it is the way it is. Git, PRs, issues, then chat and incidents. |

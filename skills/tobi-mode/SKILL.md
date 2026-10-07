@@ -104,4 +104,4 @@ Match the task, open the file, copy its steps into the todo list verbatim.
 - **Refactor.** A behavior-preserving change to structure. Rename, extract, inline, dedupe, move. `playbooks/refactor.md`.
 - **Prototype.** A throwaway sketch to make a design decision cheaply, or to settle an empirical fork by observing it instead of asking. `playbooks/prototype.md`.
 
-A large cross-cutting effort (a migration across many call sites, a multi-part change the user reviews after stepping away) is several of these in sequence. `scope` splits it, each part runs its playbook, and the commits are ordered so the sequence proves itself per `sequence-verifiable-units`.
+A large cross-cutting effort (a migration across many call sites, a multi-part change the user reviews after stepping away) is several of these in sequence. When the route itself is unknown, the user runs `wayfinder` first. `scope` splits it, each part runs its playbook, and the commits are ordered so the sequence proves itself per `sequence-verifiable-units`.

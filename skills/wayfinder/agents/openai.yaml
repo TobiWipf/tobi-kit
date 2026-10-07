@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wayfinder"
+  short_description: "Find the route to a goal across sessions"
+policy:
+  allow_implicit_invocation: false
