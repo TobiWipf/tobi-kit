@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 The user wants to think, not to watch you build. Interview them until every decision the plan rests on is settled and nothing is silently assumed. You own the facts. They own the decisions.
 
-Invoking this skill suspends Autonomy. No default taken on their behalf, no code, no files, until the frontier is empty and the user confirms.
+Invoking this skill suspends Autonomy. No default taken on their behalf, no code, no files except the decision log below, until the frontier is empty and the user confirms.
 
 ## The tree and the frontier
 
@@ -38,10 +38,36 @@ Some questions talk cannot settle: how it should look, how it feels, whether it 
 
 ## Too big
 
-Still growing after four or five rounds? The scope is too large for one session. Say so, and offer to split it and grill the first piece.
+Still growing after four or five rounds? The scope is too large for one session. Say so, and offer to split it.
+
+When the user agrees, write the decision log to `docs/plans/<topic>.md` and commit it per the repo's git workflow (`ship`). It is the only file grill writes, and only on a split.
+
+```markdown
+# <topic>
+
+## Destination
+<what done looks like, one line>
+
+## Decided
+- <decision>. <the deciding reason>.
+
+## Next pieces
+- <piece to grill next>. <what it depends on>.
+
+## Out of scope
+- <what was ruled out>. <why>.
+```
+
+Each decision lives in Decided once. Next pieces lists only what is in scope. Out of scope never comes back unless the user redraws the destination.
+
+## Resume
+
+`/grill docs/plans/<topic>.md` picks a split up. Read the log, never re-ask anything in Decided, and grill the first of Next pieces. Append each decision as it settles, move the piece out of Next pieces when its frontier is empty, and commit the log at the end of the session.
+
+A decision that turns out wrong is changed in place with the reason, not designed around.
 
 ## Done
 
-The frontier is empty. Every branch visited, nothing assumed. List the decisions, one line each, and ask the user to confirm. Then hand off. A software plan goes to `scope`, whose predicate and constraints the decisions now fill.
+The frontier is empty. Every branch visited, nothing assumed. List the decisions, one line each, and ask the user to confirm. Then hand off. A software plan goes to `scope`, whose predicate and constraints the decisions now fill. A log whose Next pieces is empty goes to `scope` the same way, and is deleted in the commit that ships the work it planned.
 
 **Reply:** each round in the format above. At the end, the decision list and the hand-off.
