@@ -9,7 +9,7 @@ Be scientific. Every shipped line traces to runtime evidence. A belt-and-suspend
 3. Find every caller of what you are about to touch. The root-cause fix is one guard in the shared path, not one per caller. Fixing only the path the ticket names leaves the sibling callers broken (`fix-root-causes`, `laziness-protocol`).
 4. Plan the fix. If it crosses a function boundary, `architect` first. Otherwise write the smallest change the evidence justifies.
 5. Verify on the same surface. The original repro now passes. "Inconclusive" or a different surface is not a pass. Unit tests show branch behavior, not bug absence.
-6. Stage the commits so the failing repro lands before the fix, marked as an expected failure so every commit stays green (`tdd` step 8). The diff tells the story. Use `tdd` when the bug has a cheap local test path. Skip it when the test would be expensive, integration-heavy, or unclear, and say why (`sequence-verifiable-units`).
+6. Stage the commits so the failing repro lands before the fix, marked as an expected failure so every commit stays green. The diff tells the story. Write the failing test first when the bug has a cheap local test path. Skip it when the test would be expensive, integration-heavy, or unclear, and say why (`sequence-verifiable-units`).
 7. Run `ship`.
 
 **Reply:** what was broken, the root cause, the fix, how you verified. Paste the failing-then-passing repro output verbatim.

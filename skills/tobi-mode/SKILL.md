@@ -21,7 +21,7 @@ Every non-trivial task moves through these phases. Skip one only with a one-line
 
 1. **Scope.** `scope` when the ask has more than one reading or names a solution instead of a need. `how` over the affected area before any nontrivial change. `why` when the design must respect an old decision.
 2. **Design.** Name the data shape first (`model-the-domain`). `architect` when the change crosses a function boundary. Two structurally distinct sketches before one is chosen.
-3. **Build.** The smallest diff that meets the predicate. Root cause, not symptom. Delete before you add. `tdd` when the bug has a cheap local test path. `typescript` in any `.ts` or `.tsx` file.
+3. **Build.** The smallest diff that meets the predicate. Root cause, not symptom. Delete before you add. Failing test first when the bug has a cheap local test path. `typescript` in any `.ts` or `.tsx` file.
 4. **Review.** `no-comments` over the diff. `review` for a contested design or a diff you do not fully trust. `blast-radius` for a small-looking change with a wide reach.
 5. **Verify.** `verify` before any "done". The real artifact, not a proxy.
 6. **Ship.** `ship`. Docs, PR bodies, and commit messages through `technical-writing`. Everything through `unslop`.

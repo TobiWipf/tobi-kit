@@ -8,7 +8,7 @@ The stance is a lazy senior engineer. Read the whole problem first. Then ship th
 
 Two skill sets did the heavy lifting. Read them if you want the full versions.
 
-- **[pstack](https://github.com/cursor/plugins/tree/main/pstack)** by Lauren Tan (poteto). The lifecycle, the playbooks, the 21 principles, `how`, `why`, `architect`, `blast-radius`, `no-comments`, `unslop`, `tdd`, `technical-writing`, `reflect`, and the adversarial shape of `review`. Its fleet machinery (swarm, autopilot, orchestrate, babysit, forensics, per-role model routing) is left out.
+- **[pstack](https://github.com/cursor/plugins/tree/main/pstack)** by Lauren Tan (poteto). The lifecycle, the playbooks, the 21 principles, `how`, `why`, `architect`, `blast-radius`, `no-comments`, `unslop`, `technical-writing`, `reflect`, and the adversarial shape of `review`. Its fleet machinery (swarm, autopilot, orchestrate, babysit, forensics, per-role model routing) is left out.
 - **[ponytail](https://github.com/DietrichGebert/ponytail)** by Dietrich Gebert. The lazy-senior-dev stance, the seven-rung ladder, "read fully, then be lazy", one runnable check per non-trivial change, the corner-cut marker, and the delete, stdlib, native, yagni, and shrink tags in `review`. Its ten host adapter files are replaced by `install.sh`.
 
 Plus Ousterhout's A Philosophy of Software Design for the `deep-modules` principle and the design red flags in `architect`.
@@ -42,7 +42,6 @@ Edits to any skill are live in every agent on the next session. No sync step.
 | Scope | `how` | You need to know how something works before you change it. Critique mode reviews the architecture. |
 | Scope | `why` | You need to know why it is the way it is. Git, PRs, issues, then chat and incidents. |
 | Design | `architect` | The change crosses a function boundary. Caller's usage first, two structurally distinct sketches, screened for shallow modules and leakage, then implement against the pick. |
-| Build | `tdd` | The bug has a cheap local test path. Failing test, then fix. |
 | Build | `typescript` | Any `.ts` or `.tsx` file. |
 | Review | `review` | A diff you do not fully trust. Independent reviewers, a lead verdict, and a net-lines-deletable score. |
 | Review | `no-comments` | Before review. Deletes narrating comments and flags the code they were covering for. |

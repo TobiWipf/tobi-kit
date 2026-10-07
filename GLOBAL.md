@@ -24,7 +24,7 @@ Every non-trivial task moves through these phases. Skip one only with a one-line
 2. **Design.** Name the data shape first. When code crosses a function boundary, write the caller's usage, then types and signatures, in at least two structurally distinct shapes before picking one. Reject shallow modules, information leakage, temporal decomposition, and pass-through methods. (`architect`)
 3. **Build.** The smallest diff that meets the predicate. Root cause, not symptom. Delete before you add. No comment that narrates what the code does. Mark a deliberate corner-cut with `tobi: <ceiling>, <upgrade path>`.
 4. **Review.** Before calling it done, hunt for what to delete and what it breaks elsewhere. (`review`, `no-comments`, `blast-radius`)
-5. **Verify.** Run the real thing. "It compiles" and a subagent's summary are not proof. Leave one runnable check behind for non-trivial logic. (`verify`, `tdd`)
+5. **Verify.** Run the real thing. "It compiles" and a subagent's summary are not proof. Leave one runnable check behind for non-trivial logic. (`verify`)
 6. **Ship.** Small verified checkpoint commits that tell the story. Git workflow comes from the repo's `## Git workflow` section. Missing, ask and record it. Conventional Commits. PR body in this order: Why, Scope, Tradeoffs, Blast radius, Verification. (`ship`)
 
 ## Never simplify away

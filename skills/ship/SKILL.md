@@ -35,7 +35,7 @@ A commit is a checkpoint. One logical step, verified, that builds and passes che
 
 - Commit when a unit is verified, not at the end of the session. Never batch unrelated steps into one commit.
 - Over about 200 changed lines? Find the logical split before committing. The subtraction apart from the reshape, a mechanical rename apart from the behavior change, one module apart from another. Do not split what cannot stand alone. A generated file or one codemod run can be large and still be one step.
-- Order proves the work. Failing test (marked as an expected failure, per `tdd`), then fix. Subtraction, then reshape. Scaffold, then feature (`sequence-verifiable-units`).
+- Order proves the work. Failing test (marked as an expected failure), then fix. Subtraction, then reshape. Scaffold, then feature (`sequence-verifiable-units`).
 - Amend when the fix belongs in the commit you just made and it is not pushed. New commit when it is separable.
 - Never force-push a shared branch without asking.
 
