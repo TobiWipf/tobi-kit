@@ -12,7 +12,7 @@ The commit sequence is an argument. Each commit lands on its own and the order p
 Git workflow differs per repository, so never assume one. Before committing in a repo whose rules you have not read this session, look for a `## Git workflow` section in its `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`.
 
 - **Found.** Follow it. It overrides anything below.
-- **Missing.** Ask once, batched, with a default for each question. Write the answers into the repo's `AGENTS.md` as `## Git workflow` and commit that on its own. When the repo's `AGENTS.md` is your global rules file (a symlink into your skills repo), write a repo-local `CLAUDE.md` instead so the rules do not leak into every repo.
+- **Missing.** Ask once, batched, with a default for each question. Write the answers into the repo's `AGENTS.md` as `## Git workflow` and commit that on its own.
 
 Skip any question the repo already answers through branch protection, CI config, or a PR template. Read those first. Ask the rest:
 

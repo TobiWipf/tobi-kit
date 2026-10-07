@@ -32,16 +32,16 @@ for f in "$ROOT"/skills/tobi-mode/playbooks/*.md; do
 done
 
 # the prose rules apply to the repo itself
-grep -rln -- '—' "$ROOT/AGENTS.md" "$ROOT/skills" "$ROOT/README.md" 2>/dev/null | while read -r f; do echo "FAIL em dash in $f"; done | grep . && fail=1
+grep -rln -- '—' "$ROOT/GLOBAL.md" "$ROOT/skills" "$ROOT/README.md" 2>/dev/null | while read -r f; do echo "FAIL em dash in $f"; done | grep . && fail=1
 
-# the six lifecycle phases must appear, in bold, in both AGENTS.md and the mode
+# the six lifecycle phases must appear, in bold, in both GLOBAL.md and the mode
 for phase in Scope Design Build Review Verify Ship; do
-  for f in "$ROOT/AGENTS.md" "$MODE"; do grep -q "\*\*$phase\.\*\*" "$f" || err "$f lost lifecycle phase $phase"; done
+  for f in "$ROOT/GLOBAL.md" "$MODE"; do grep -q "\*\*$phase\.\*\*" "$f" || err "$f lost lifecycle phase $phase"; done
 done
 
-# AGENTS.md is the compact copy of the mode; pin the load-bearing phrases so a reword in one place cannot silently drop them from the other
+# GLOBAL.md is the compact copy of the mode; pin the load-bearing phrases so a reword in one place cannot silently drop them from the other
 for phrase in 'Does this need to exist at all' 'already exist in this codebase' 'trace the real flow end to end' 'Input validation at trust boundaries' 'Code first' 'No em dash'; do
-  grep -qi "$phrase" "$ROOT/AGENTS.md" || err "AGENTS.md lost invariant: $phrase"
+  grep -qi "$phrase" "$ROOT/GLOBAL.md" || err "GLOBAL.md lost invariant: $phrase"
 done
 for phrase in 'Does this need to exist at all' 'already exist in this codebase' 'trace the real flow end to end' 'Input validation at trust boundaries'; do
   grep -qi "$phrase" "$ROOT/skills/tobi-mode/principles/laziness-protocol.md" || err "laziness-protocol lost invariant: $phrase"

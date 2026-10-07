@@ -33,9 +33,9 @@ for d in $SKILL_DIRS; do
   for s in "$ROOT"/skills/*/; do link "$s" "$d/$(basename "$s")"; done
 done
 
-for t in $RULE_TARGETS; do mkdir -p "$(dirname "$t")"; link "$ROOT/AGENTS.md" "$t"; done
+for t in $RULE_TARGETS; do mkdir -p "$(dirname "$t")"; link "$ROOT/GLOBAL.md" "$t"; done
 
-# Cursor wants frontmatter on rule files, so this one is generated, not linked. Re-run after editing AGENTS.md.
+# Cursor wants frontmatter on rule files, so this one is generated, not linked. Re-run after editing GLOBAL.md.
 mkdir -p "$(dirname "$CURSOR_RULE")"
-{ printf -- '---\ndescription: tobi-mode, generated from Tobi'\''s Kit (AGENTS.md). Edit the source, then re-run install.sh.\nalwaysApply: true\n---\n'; cat "$ROOT/AGENTS.md"; } > "$CURSOR_RULE"
+{ printf -- '---\ndescription: tobi-mode, generated from Tobi'\''s Kit (GLOBAL.md). Edit the source, then re-run install.sh.\nalwaysApply: true\n---\n'; cat "$ROOT/GLOBAL.md"; } > "$CURSOR_RULE"
 echo "wrote $CURSOR_RULE"

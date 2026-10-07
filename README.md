@@ -25,8 +25,8 @@ git clone <this repo> ~/Developer/tobi-kit
 What it does.
 
 - Symlinks each `skills/<name>/` into `~/.claude/skills`, `~/.codex/skills`, `~/.cursor/skills`, and `~/.config/opencode/skills`.
-- Symlinks `AGENTS.md` to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, so the compact rules are always on. Existing non-empty files are backed up first.
-- Generates `~/.cursor/rules/tobi-mode.mdc` from `AGENTS.md` (Cursor needs frontmatter). Re-run after editing `AGENTS.md`.
+- Symlinks `GLOBAL.md` to `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, so the compact rules are always on. Existing non-empty files are backed up first.
+- Generates `~/.cursor/rules/tobi-mode.mdc` from `GLOBAL.md` (Cursor needs frontmatter). Re-run after editing `GLOBAL.md`.
 
 `install.sh --uninstall` removes only what it created. If the ponytail plugin is still enabled in Claude Code, disable it. Its ladder now lives here and two copies means a doubled system prompt.
 
@@ -71,6 +71,6 @@ Edits to any skill are live in every agent on the next session. No sync step.
 scripts/check.sh
 ```
 
-Checks frontmatter, that every referenced file exists, that every principle and playbook is indexed in the mode, that `AGENTS.md` still carries the load-bearing phrases the mode carries, and that no em dash slipped in.
+Checks frontmatter, that every referenced file exists, that every principle and playbook is indexed in the mode, that `GLOBAL.md` still carries the load-bearing phrases the mode carries, and that no em dash slipped in.
 
-`AGENTS.md` is the compact always-on copy of `skills/tobi-mode/SKILL.md`. Change a rule in both or the check fails.
+`GLOBAL.md` is the compact always-on copy of `skills/tobi-mode/SKILL.md`. Change a rule in both or the check fails. `AGENTS.md` holds this repo's own rules, so Claude Code and Codex both read them here without them leaking into other repos.
