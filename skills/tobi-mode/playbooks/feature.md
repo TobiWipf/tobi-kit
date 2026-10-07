@@ -8,7 +8,7 @@
 4. Name the data shape and its organizing structure before writing logic (`model-the-domain`). A state machine over scattered booleans, a table or registry over branching, a typed model over repeated shape assumptions.
 5. Build the smallest diff that meets the predicate. Subtract first (`subtract-before-you-add`). Reuse what exists (ladder rung 2). Comments per the mode's Comments section. When you fan out to subagents, give each its own write target (`separate-before-serializing-shared-state`) and review every diff yourself.
 6. `verify` on the matching surface. "Inconclusive" or a different surface is not a pass.
-7. Rebase into small ordered commits, each verified before the next (`sequence-verifiable-units`).
+7. Commit each verified unit as a checkpoint, per `ship` (`sequence-verifiable-units`).
 8. If the design is contested or the diff is large, `review` before shipping.
 9. Run `ship`.
 

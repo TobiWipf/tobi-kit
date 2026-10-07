@@ -11,6 +11,8 @@ The deliverable is the verdict. Do not auto-apply changes.
 
 ## 1. Scope
 
+First read the repo's `## Git workflow` section for what review means here (a local verdict, PR comments, a requested reviewer) and follow it. Missing? Ask with the default, local verdict and nothing posted, and record the answer per `ship`.
+
 From context. The files or diff the user pointed at. Otherwise `git diff <base>...HEAD` plus the working tree, base `main` unless the branch says otherwise. Package the diff plus the surrounding files a reviewer needs to understand it.
 
 ## 2. Intent
