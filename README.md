@@ -6,14 +6,15 @@ The stance is a lazy senior engineer. Read the whole problem first. Then ship th
 
 ## Built on
 
-Two skill sets did the heavy lifting. Read them if you want the full versions.
+Three skill sets did the heavy lifting. Read them if you want the full versions.
 
 - **[pstack](https://github.com/cursor/plugins/tree/main/pstack)** by Lauren Tan (poteto). The lifecycle, the playbooks, the 21 principles, `how`, `why`, `architect`, `blast-radius`, `no-comments`, `unslop`, `technical-writing`, `reflect`, and the adversarial shape of `review`. Its fleet machinery (swarm, autopilot, orchestrate, babysit, forensics, per-role model routing) is left out.
 - **[ponytail](https://github.com/DietrichGebert/ponytail)** by Dietrich Gebert. The lazy-senior-dev stance, the seven-rung ladder, "read fully, then be lazy", one runnable check per non-trivial change, the corner-cut marker, and the delete, stdlib, native, yagni, and shrink tags in `review`. Its ten host adapter files are replaced by `install.sh`.
+- **[skills](https://github.com/mattpocock/skills)** by Matt Pocock. The design-tree interview in `grill`: frontier rounds, recommended answers, facts looked up rather than asked, and prototyping what talk cannot settle.
 
 Plus Ousterhout's A Philosophy of Software Design for the `deep-modules` principle and the design red flags in `architect`.
 
-Both sources are MIT. See LICENSE.
+All three sources are MIT. See LICENSE.
 
 ## Install
 
@@ -38,6 +39,7 @@ Edits to any skill are live in every agent on the next session. No sync step.
 
 | Phase | Skill | Use it when |
 |---|---|---|
+| Scope | `grill` | You want to think a plan through before anything is built. User-invoked only. Rounds of questions, each with a recommended answer. |
 | Scope | `scope` | A vague ask. Produces the done-predicate, the constraints the code imposes, what is out, and which questions to settle by running versus asking. |
 | Scope | `how` | You need to know how something works before you change it. Critique mode reviews the architecture. |
 | Scope | `why` | You need to know why it is the way it is. Git, PRs, issues, then chat and incidents. |
@@ -62,7 +64,7 @@ Edits to any skill are live in every agent on the next session. No sync step.
 
 - A deliberate corner-cut is marked `tobi: <ceiling>, <upgrade path>` in a comment. `grep -rn 'tobi:'` is the debt ledger.
 - No em dashes anywhere, including here. `scripts/check.sh` enforces it.
-- Skills are the open `SKILL.md` format (frontmatter `name` and `description`, then markdown). Nothing host-specific inside a skill. Host adapters live in `install.sh` only.
+- Skills are the open `SKILL.md` format (frontmatter `name` and `description`, then markdown). Nothing host-specific inside a skill, except the flags that make a skill user-invoked only: `disable-model-invocation` in the frontmatter for Claude Code, and `agents/openai.yaml` for Codex. Other host adapters live in `install.sh`.
 
 ## Editing
 

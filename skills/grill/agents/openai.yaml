@@ -1,0 +1,5 @@
+interface:
+  display_name: "Grill"
+  short_description: "Settle a plan through rounds of questions"
+policy:
+  allow_implicit_invocation: false
